@@ -6,10 +6,12 @@ namespace SystemIOTwo
     {
         static void Main(string[] args)
         {
-            ChallengeTwo();
+            //ChallengeOne();
+            //ChallengeTwo();
+            ChallengeThree();
         }
 
-
+        #region ChallengeOne
         /// <summary>
         /// A method that asks the user for 3 numbers.
         /// Return the product of these 3 numbers multiplied together.
@@ -22,6 +24,7 @@ namespace SystemIOTwo
             Console.Write("Please enter 3 numbers (eg. 4 8 15): ");
             string input = Console.ReadLine();
             Console.WriteLine("The product of these 3 numbers is: {0}", GetProduct(input));
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -50,7 +53,9 @@ namespace SystemIOTwo
 
             return product;
         }
+        #endregion
 
+        #region ChallengeTwo
         /// <summary>
         /// A method that asks the user to enter a number between 2-10.
         /// Then, prompt the user that number of times for random numbers.
@@ -88,6 +93,7 @@ namespace SystemIOTwo
             }
 
             Console.WriteLine($"The average of these {count} numbers is: {GetAverage(arr, count)}");
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -105,5 +111,41 @@ namespace SystemIOTwo
 
             return sum/count;
         }
+        #endregion
+
+        #region ChallengeThree
+        // source: https://www.w3resource.com/csharp-exercises/for-loop/csharp-for-loop-exercise-31.php
+        /// <summary>
+        /// A method that outputs a diamon like pattern to the console
+        /// </summary>
+        public static void ChallengeThree()
+        {
+            int rows = 5;
+
+            for (int i = 0; i <= rows; i++)
+            {
+                for (int j = 1; j <= rows - i; j++)
+                    Console.Write(" ");
+
+                for (int j = 1; j <= 2 * i - 1; j++)
+                    Console.Write("*");
+
+                Console.WriteLine();
+            }
+
+            for (int i = rows - 1; i >= 1; i--)
+            {
+                for (int j = 1; j <= rows - i; j++)
+                    Console.Write(" ");
+
+                for (int j = 1; j <= 2 * i - 1; j++)
+                    Console.Write("*");
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+        }
+        #endregion
     }
 }
