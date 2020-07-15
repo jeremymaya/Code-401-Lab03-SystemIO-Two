@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace SystemIOTwo
 {
@@ -8,7 +11,8 @@ namespace SystemIOTwo
         {
             //ChallengeOne();
             //ChallengeTwo();
-            ChallengeThree();
+            //ChallengeThree();
+            ChallengeFour();
         }
 
         #region ChallengeOne
@@ -109,7 +113,7 @@ namespace SystemIOTwo
             for (int i = 0; i < count; i++)
                 sum += arr[i];
 
-            return sum/count;
+            return sum / count;
         }
         #endregion
 
@@ -145,6 +149,45 @@ namespace SystemIOTwo
             }
 
             Console.WriteLine();
+        }
+        #endregion
+
+        #region ChallengeFour
+        public static void ChallengeFour()
+        {
+            Console.WriteLine("Example: Input: [1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1]");
+
+            int[] arr = new int[] { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 };
+
+            int[] arr1 = new int[] { 1, 2, 3, 4};
+
+            Console.WriteLine("The number that appears the most times: {0}", GetMostFrequent(arr1));
+        }
+
+        public static int GetMostFrequent(int[] arr)
+        {
+            int count = 0;
+            int most = 0;
+            int num = arr[0];
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int current = arr[i];
+
+                for (int j = 0; j < arr.Length; j++)
+                    if (current == arr[j])
+                        count++;
+
+                if (count > most)
+                {
+                    num = current;
+                    most = count;
+                }
+
+                count = 0;
+            }
+
+            return num;
         }
         #endregion
     }
