@@ -52,5 +52,21 @@ namespace SystemIOTwoUnitTest
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new int[] { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 }, 1)]
+        [InlineData(new int[] { 1, 2, 3, 4, 4 }, 4)]
+        [InlineData(new int[] { 1, 1, 1, 1 }, 1)]
+        [InlineData(new int[] { 1, 2, 3, 4 }, 1)]
+        [InlineData(new int[] { 1, 1, 2, 2, 3, 3, 4, 4 }, 1)]
+        public void ChallengeFourTests(int[] arr, int expected)
+        {
+            // Arrange
+            // Act
+            int actual = GetMostFrequent(arr);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }

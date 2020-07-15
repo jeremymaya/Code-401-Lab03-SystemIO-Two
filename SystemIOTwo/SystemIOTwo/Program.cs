@@ -159,34 +159,35 @@ namespace SystemIOTwo
 
             int[] arr = new int[] { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 };
 
-            Console.WriteLine("The number that appears the most times: {0}", GetMostFrequent(arr));
+            int[] arr1 = new int[] { 1, 2, 3, 4};
+
+            Console.WriteLine("The number that appears the most times: {0}", GetMostFrequent(arr1));
         }
 
         public static int GetMostFrequent(int[] arr)
         {
-            Dictionary<int, int> numFreq = new Dictionary<int, int>();
+            int count = 0;
+            int most = 0;
+            int num = arr[0];
 
             for (int i = 0; i < arr.Length; i++)
             {
-                if (numFreq.ContainsKey(arr[i]))
-                    numFreq[arr[i]]++;
-                else
-                    numFreq.Add(arr[i], 1);
-            }
+                int current = arr[i];
 
-            int most = 0;
-            int count = 0;
+                for (int j = 0; j < arr.Length; j++)
+                    if (current == arr[j])
+                        count++;
 
-            foreach (var item in numFreq)
-            {
-                if (item.Value > count)
+                if (count > most)
                 {
-                    most = item.Key;
-                    count = item.Value;
+                    num = current;
+                    most = count;
                 }
+
+                count = 0;
             }
 
-            return most;
+            return num;
         }
         #endregion
     }
