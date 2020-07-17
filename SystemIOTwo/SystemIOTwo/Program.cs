@@ -11,13 +11,22 @@ namespace SystemIOTwo
         static void Main(string[] args)
         {
             string path = "../../../words.txt";
+            if (!File.Exists(path))
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("Hello");
+                    sw.WriteLine("And");
+                    sw.WriteLine("Welcome");
+                }
 
             //ChallengeOne();
             //ChallengeTwo();
             //ChallengeThree();
             //ChallengeFour();
             //ChallengeFive();
-            ChallengeSix(path);
+            //ChallengeSix(path);
+            //ChallengeSeven(path);
+            //ChallengeEight(path);
         }
 
         #region ChallengeOne
@@ -245,14 +254,6 @@ namespace SystemIOTwo
         /// <param name="path">words.txt file path</param>
         public static void ChallengeSix(string path)
         {
-            if (!File.Exists(path))
-                using (StreamWriter sw = File.CreateText(path))
-                {
-                    sw.WriteLine("Hello");
-                    sw.WriteLine("And");
-                    sw.WriteLine("Welcome");
-                }
-
             Console.Write("Enter a word: ");
             string input = Console.ReadLine();
 
@@ -260,6 +261,64 @@ namespace SystemIOTwo
                 sw.WriteLine(input);
 
             Console.WriteLine("Entered word has been saved!");
+        }
+        #endregion
+
+        #region ChallengeSeven
+        /// <summary>
+        /// A method that reads the file in from Challenge 6, and outputs the contents to the console.
+        /// </summary>
+        /// <param name="path">words.txt file path</param>
+        public static void ChallengeSeven(string path)
+        {
+            Console.WriteLine("words.txt file contains the following words:");
+
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string word = "";
+                while ((word = sr.ReadLine()) != null)
+                    Console.WriteLine(word);
+            }
+        }
+        #endregion
+
+        #region ChallengeEight
+        // source: https://docs.microsoft.com/en-us/dotnet/api/system.io.file.readalllines?view=netcore-3.1
+        // soruce: https://stackoverflow.com/questions/3975290/produce-a-random-number-in-a-range-using-c-sharp
+        /// <summary>
+        /// A method that reads in the file from Challenge 6 and removes one of the words, and rewrites it back to the file.
+        /// </summary>
+        /// <param name="path">words.txt file path</param>
+        public static void ChallengeEight(string path)
+        {
+            string[] words = File.ReadAllLines(path);
+
+            if (words.Length == 0)
+            {
+                Console.WriteLine("words.txt file is empty");
+                return;
+            }
+
+            Random rnd = new Random();
+            int random = rnd.Next(words.Length);
+
+            string word = "";
+
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                for (int i = 0; i < words.Length; i++)
+                {
+                    if (i == random)
+                        word = words[i];
+                    else
+                        sw.WriteLine(words[i]);
+                }
+            }
+
+            Console.WriteLine("\"{0}\" has been removed from words.txt file", word);
+            Console.WriteLine();
+
+            ChallengeSeven(path);
         }
         #endregion
     }
