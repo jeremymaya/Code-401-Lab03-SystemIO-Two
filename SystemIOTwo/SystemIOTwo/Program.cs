@@ -12,7 +12,8 @@ namespace SystemIOTwo
             //ChallengeOne();
             //ChallengeTwo();
             //ChallengeThree();
-            ChallengeFour();
+            //ChallengeFour();
+            ChallengeFive();
         }
 
         #region ChallengeOne
@@ -101,7 +102,7 @@ namespace SystemIOTwo
         }
 
         /// <summary>
-        /// A method iterates through an int array and return the average of the numbers in the index
+        /// A method that iterates through an int array and return the average of the numbers in the index
         /// </summary>
         /// <param name="arr">An int array containing the list of random numbers entered by the user</param>
         /// <param name="count">A number chosen by the user</param>
@@ -153,17 +154,25 @@ namespace SystemIOTwo
         #endregion
 
         #region ChallengeFour
+        /// <summary>
+        /// A method that brings in an integer array and returns the number that appears the most times.
+        /// If there are no duplicates, return the first number in the array.
+        /// If more than one number show up the same amount of time, return the first found.
+        /// </summary>
         public static void ChallengeFour()
         {
             Console.WriteLine("Example: Input: [1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1]");
 
             int[] arr = new int[] { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 };
 
-            int[] arr1 = new int[] { 1, 2, 3, 4};
-
-            Console.WriteLine("The number that appears the most times: {0}", GetMostFrequent(arr1));
+            Console.WriteLine("The most number from the input: {0}", GetMostFrequent(arr));
         }
 
+        /// <summary>
+        /// A method that iterates through an int array and return the most common number in the array
+        /// </summary>
+        /// <param name="arr">An int array containing the list of random numbers</param>
+        /// <returns>Most common number in the array</returns>
         public static int GetMostFrequent(int[] arr)
         {
             int count = 0;
@@ -188,6 +197,39 @@ namespace SystemIOTwo
             }
 
             return num;
+        }
+        #endregion
+
+        #region ChallengeFive
+        /// <summary>
+        /// A method in that finds the maximum value in the array.
+        /// The array is not sorted.
+        /// Do not use .Sort()
+        /// </summary>
+        public static void ChallengeFive()
+        {
+            Console.WriteLine("Example: Input: [5, 25, 99, 123, 78, 96, 555, 108, 4]");
+
+            int[] arr = new int[] { 5, 25, 99, 123, 78, 96, 555, 108, 4 };
+
+            Console.WriteLine("The maximum number from the input: {0}", GetMaximum(arr));
+
+        }
+
+        /// <summary>
+        /// A method that iterates through an int array and return the maximum number in the array
+        /// </summary>
+        /// <param name="arr">An int array containing the list of random numbers</param>
+        /// <returns>Maximum number in the array</returns>
+        public static int GetMaximum(int[] arr)
+        {
+            int max = arr[0];
+
+            for (int i = 1; i < arr.Length; i++)
+                if (arr[i] > max)
+                    max = arr[i];
+
+            return max;
         }
         #endregion
     }
