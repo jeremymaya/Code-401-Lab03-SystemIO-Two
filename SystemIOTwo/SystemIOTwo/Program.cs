@@ -12,7 +12,8 @@ namespace SystemIOTwo
             //ChallengeOne();
             //ChallengeTwo();
             //ChallengeThree();
-            ChallengeFour();
+            //ChallengeFour();
+            ChallengeFive();
         }
 
         #region ChallengeOne
@@ -164,7 +165,7 @@ namespace SystemIOTwo
 
             int[] arr = new int[] { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 };
 
-            Console.WriteLine("The number that appears the most times: {0}", GetMostFrequent(arr));
+            Console.WriteLine("The most number from the input: {0}", GetMostFrequent(arr));
         }
 
         /// <summary>
@@ -211,13 +212,24 @@ namespace SystemIOTwo
 
             int[] arr = new int[] { 5, 25, 99, 123, 78, 96, 555, 108, 4 };
 
-            Console.WriteLine("The number that appears the most times: {0}", GetMostFrequent(arr));
+            Console.WriteLine("The maximum number from the input: {0}", GetMaximum(arr));
 
         }
 
+        /// <summary>
+        /// A method that iterates through an int array and return the maximum number in the array
+        /// </summary>
+        /// <param name="arr">An int array containing the list of random numbers</param>
+        /// <returns>Maximum number in the array</returns>
         public static int GetMaximum(int[] arr)
         {
+            int max = arr[0];
 
+            for (int i = 1; i < arr.Length; i++)
+                if (arr[i] > max)
+                    max = arr[i];
+
+            return max;
         }
         #endregion
     }

@@ -68,5 +68,20 @@ namespace SystemIOTwoUnitTest
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(new int[] { 5, 25, 99, 123, 78, 96, 555, 108, 4 }, 555)]
+        [InlineData(new int[] { -5, -1, -2 }, -1)]
+        [InlineData(new int[] { -5, -100, -1, 2 }, 2)]
+        [InlineData(new int[] { 1, 1, 1, 1 }, 1)]
+        public void ChallengeFiveTests(int[] arr, int expected)
+        {
+            // Arrange
+            // Act
+            int actual = GetMaximum(arr);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
