@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -9,11 +10,14 @@ namespace SystemIOTwo
     {
         static void Main(string[] args)
         {
+            string path = "../../../words.txt";
+
             //ChallengeOne();
             //ChallengeTwo();
             //ChallengeThree();
             //ChallengeFour();
-            ChallengeFive();
+            //ChallengeFive();
+            ChallengeSix(path);
         }
 
         #region ChallengeOne
@@ -230,6 +234,32 @@ namespace SystemIOTwo
                     max = arr[i];
 
             return max;
+        }
+        #endregion
+
+        #region ChallengeSix
+        // source: https://docs.microsoft.com/en-us/dotnet/api/system.io.file.appendtext?view=netcore-3.1
+        /// <summary>
+        /// A method that asks the user to input a word, and then saves that word into an external file named words.txt
+        /// </summary>
+        /// <param name="path"></param>
+        public static void ChallengeSix(string path)
+        {
+            if (!File.Exists(path))
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("Hello");
+                    sw.WriteLine("And");
+                    sw.WriteLine("Welcome");
+                }
+
+            Console.Write("Enter a word: ");
+            string input = Console.ReadLine();
+
+            using (StreamWriter sw = File.AppendText(path))
+                sw.WriteLine(input);
+
+            Console.WriteLine("Entered word has been saved!");
         }
         #endregion
     }
