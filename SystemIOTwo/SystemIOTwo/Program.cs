@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace SystemIOTwo
 {
@@ -19,20 +17,21 @@ namespace SystemIOTwo
                     sw.WriteLine("Welcome");
                 }
 
-            //ChallengeOne();
-            //ChallengeTwo();
-            //ChallengeThree();
-            //ChallengeFour();
-            //ChallengeFive();
-            //ChallengeSix(path);
-            //ChallengeSeven(path);
-            //ChallengeEight(path);
+            ChallengeOne();
+            ChallengeTwo();
+            ChallengeThree();
+            ChallengeFour();
+            ChallengeFive();
+            ChallengeSix(path);
+            ChallengeSeven(path);
+            ChallengeEight(path);
+            ChallengeNine();
         }
 
-        #region ChallengeOne
+        #region Challenge 1
         /// <summary>
         /// A method that asks the user for 3 numbers.
-        /// Return the product of these 3 numbers multiplied together.
+        /// Outputs the product of these 3 numbers multiplied together.
         /// If the user puts in less than 3 numbers, return 0.
         /// If the user puts in more than 3 numbers, only multiply the first 3.
         /// If the number is not a number, default that value to 1.
@@ -61,9 +60,8 @@ namespace SystemIOTwo
 
             for (int i = 0; i < 3; i++)
             {
-                int num;
 
-                if (!int.TryParse(nums[i], out num))
+                if (!int.TryParse(nums[i], out int num))
                     product *= 1;
                 else
                     product *= num;
@@ -73,7 +71,7 @@ namespace SystemIOTwo
         }
         #endregion
 
-        #region ChallengeTwo
+        #region Challenge 2
         /// <summary>
         /// A method that asks the user to enter a number between 2-10.
         /// Then, prompt the user that number of times for random numbers.
@@ -131,10 +129,10 @@ namespace SystemIOTwo
         }
         #endregion
 
-        #region ChallengeThree
+        #region Challenge 3
         // source: https://www.w3resource.com/csharp-exercises/for-loop/csharp-for-loop-exercise-31.php
         /// <summary>
-        /// A method that outputs a diamon like pattern to the console
+        /// A method that outputs a diamond like pattern to the console
         /// </summary>
         public static void ChallengeThree()
         {
@@ -166,7 +164,7 @@ namespace SystemIOTwo
         }
         #endregion
 
-        #region ChallengeFour
+        #region Challenge 4
         /// <summary>
         /// A method that brings in an integer array and returns the number that appears the most times.
         /// If there are no duplicates, return the first number in the array.
@@ -179,6 +177,7 @@ namespace SystemIOTwo
             int[] arr = new int[] { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 };
 
             Console.WriteLine("The most number from the input: {0}", GetMostFrequent(arr));
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -213,7 +212,7 @@ namespace SystemIOTwo
         }
         #endregion
 
-        #region ChallengeFive
+        #region Challenge 5
         /// <summary>
         /// A method in that finds the maximum value in the array.
         /// The array is not sorted.
@@ -226,7 +225,7 @@ namespace SystemIOTwo
             int[] arr = new int[] { 5, 25, 99, 123, 78, 96, 555, 108, 4 };
 
             Console.WriteLine("The maximum number from the input: {0}", GetMaximum(arr));
-
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -246,7 +245,7 @@ namespace SystemIOTwo
         }
         #endregion
 
-        #region ChallengeSix
+        #region Challenge 6
         // source: https://docs.microsoft.com/en-us/dotnet/api/system.io.file.appendtext?view=netcore-3.1
         /// <summary>
         /// A method that asks the user to input a word, and then saves that word into an external file named words.txt
@@ -261,10 +260,11 @@ namespace SystemIOTwo
                 sw.WriteLine(input);
 
             Console.WriteLine("Entered word has been saved!");
+            Console.WriteLine();
         }
         #endregion
 
-        #region ChallengeSeven
+        #region Challenge 7
         /// <summary>
         /// A method that reads the file in from Challenge 6, and outputs the contents to the console.
         /// </summary>
@@ -279,10 +279,11 @@ namespace SystemIOTwo
                 while ((word = sr.ReadLine()) != null)
                     Console.WriteLine(word);
             }
+            Console.WriteLine();
         }
         #endregion
 
-        #region ChallengeEight
+        #region Challenge 8
         // source: https://docs.microsoft.com/en-us/dotnet/api/system.io.file.readalllines?view=netcore-3.1
         // soruce: https://stackoverflow.com/questions/3975290/produce-a-random-number-in-a-range-using-c-sharp
         /// <summary>
@@ -319,6 +320,37 @@ namespace SystemIOTwo
             Console.WriteLine();
 
             ChallengeSeven(path);
+        }
+        #endregion
+
+        #region Challenge 9
+        /// <summary>
+        ///  A method that asks the user to input a sentence.
+        ///  Outputs the word and the number of characters each word has.
+        /// </summary>
+        public static void ChallengeNine()
+        {
+            Console.Write("Enter a sentence: ");
+            string input = Console.ReadLine();
+
+            Console.WriteLine();
+
+            Console.WriteLine("[" + string.Join(", ", SplitASentence(input)) + "]");
+        }
+
+        /// <summary>
+        /// A method that parses user input and returns a string array with the word and the number of characters each word has
+        /// </summary>
+        /// <param name="input">A setence entered by the user</param>
+        /// <returns>A string array containing the processed words</returns>
+        public static string[] SplitASentence(string input)
+        {
+            string[] words = input.Split(' ');
+
+            for (int i = 0; i < words.Length; i++)
+                words[i] = words[i].ToLower() + ": " + words[i].Count();
+
+            return words;
         }
         #endregion
     }
