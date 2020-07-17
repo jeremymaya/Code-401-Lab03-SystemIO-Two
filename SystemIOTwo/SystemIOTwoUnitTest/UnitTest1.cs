@@ -83,5 +83,18 @@ namespace SystemIOTwoUnitTest
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("This is a sentance about important things", new string[] { "this: 4", "is: 2", "a: 1", "sentance: 8", "about: 5", "important: 9", "things: 6" })]
+        [InlineData("!@# $%^^ &*()", new string[] { "!@#: 3", "$%^^: 4", "&*(): 4" })]
+        public void ChallengeNineTests(string input, string[] expected)
+        {
+            // Arrange
+            // Act
+            string[] actual = SplitASentence(input);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
