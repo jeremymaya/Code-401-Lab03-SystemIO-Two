@@ -242,7 +242,7 @@ namespace SystemIOTwo
         /// <summary>
         /// A method that asks the user to input a word, and then saves that word into an external file named words.txt
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="path">words.txt file path</param>
         public static void ChallengeSix(string path)
         {
             if (!File.Exists(path))
