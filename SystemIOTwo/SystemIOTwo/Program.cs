@@ -9,13 +9,7 @@ namespace SystemIOTwo
         static void Main(string[] args)
         {
             string path = "../../../words.txt";
-            if (!File.Exists(path))
-                using (StreamWriter sw = File.CreateText(path))
-                {
-                    sw.WriteLine("Hello");
-                    sw.WriteLine("And");
-                    sw.WriteLine("Welcome");
-                }
+            GenerateTextFile(path);
 
             ChallengeOne();
             ChallengeTwo();
@@ -28,6 +22,21 @@ namespace SystemIOTwo
             ChallengeNine();
         }
 
+        /// <summary>
+        /// A method that generates words.txt file
+        /// </summary>
+        /// <param name="path">words.txt file path</param>
+        public static void GenerateTextFile(string path)
+        {
+            if (!File.Exists(path))
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("Hello");
+                    sw.WriteLine("And");
+                    sw.WriteLine("Welcome");
+                }
+        }
+
         #region Challenge 1
         /// <summary>
         /// A method that asks the user for 3 numbers.
@@ -38,6 +47,9 @@ namespace SystemIOTwo
         /// </summary>
         public static void ChallengeOne()
         {
+            Console.WriteLine("Challenge 1");
+            Console.WriteLine();
+
             Console.Write("Please enter 3 numbers (eg. 4 8 15): ");
             string input = Console.ReadLine();
             Console.WriteLine("The product of these 3 numbers is: {0}", GetProduct(input));
@@ -79,6 +91,9 @@ namespace SystemIOTwo
         /// </summary>
         public static void ChallengeTwo()
         {
+            Console.WriteLine("Challenge 2");
+            Console.WriteLine();
+
             Console.Write("Please enter a number between 2-10: ");
             string input = Console.ReadLine();
 
@@ -136,6 +151,9 @@ namespace SystemIOTwo
         /// </summary>
         public static void ChallengeThree()
         {
+            Console.WriteLine("Challenge 3");
+            Console.WriteLine();
+
             int rows = 5;
 
             for (int i = 0; i <= rows; i++)
@@ -172,6 +190,9 @@ namespace SystemIOTwo
         /// </summary>
         public static void ChallengeFour()
         {
+            Console.WriteLine("Challenge 4");
+            Console.WriteLine();
+
             Console.WriteLine("Example: Input: [1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1]");
 
             int[] arr = new int[] { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 };
@@ -220,6 +241,9 @@ namespace SystemIOTwo
         /// </summary>
         public static void ChallengeFive()
         {
+            Console.WriteLine("Challenge 5");
+            Console.WriteLine();
+
             Console.WriteLine("Example: Input: [5, 25, 99, 123, 78, 96, 555, 108, 4]");
 
             int[] arr = new int[] { 5, 25, 99, 123, 78, 96, 555, 108, 4 };
@@ -253,6 +277,9 @@ namespace SystemIOTwo
         /// <param name="path">words.txt file path</param>
         public static void ChallengeSix(string path)
         {
+            Console.WriteLine("Challenge 6");
+            Console.WriteLine();
+
             Console.Write("Enter a word: ");
             string input = Console.ReadLine();
 
@@ -271,6 +298,9 @@ namespace SystemIOTwo
         /// <param name="path">words.txt file path</param>
         public static void ChallengeSeven(string path)
         {
+            Console.WriteLine("Challenge 7");
+            Console.WriteLine();
+
             Console.WriteLine("words.txt file contains the following words:");
 
             using (StreamReader sr = new StreamReader(path))
@@ -292,6 +322,9 @@ namespace SystemIOTwo
         /// <param name="path">words.txt file path</param>
         public static void ChallengeEight(string path)
         {
+            Console.WriteLine("Challenge 8");
+            Console.WriteLine();
+
             string[] words = File.ReadAllLines(path);
 
             if (words.Length == 0)
@@ -330,6 +363,9 @@ namespace SystemIOTwo
         /// </summary>
         public static void ChallengeNine()
         {
+            Console.WriteLine("Challenge 9");
+            Console.WriteLine();
+
             Console.Write("Enter a sentence: ");
             string input = Console.ReadLine();
 
