@@ -180,11 +180,11 @@ Tests:
 
 #### Challenge Output Part 1
 
-![Image 1](Screenshots/01.PNG)
+![Image 1](Screenshots/01.png)
 
 #### Challenge Output Part 2
 
-![Image 2](Screenshots/02.PNG)
+![Image 2](Screenshots/02.png)
 
 ----
 
