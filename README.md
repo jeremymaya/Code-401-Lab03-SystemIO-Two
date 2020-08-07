@@ -1,5 +1,7 @@
 # Code-401-Lab03-SystemIO-Two
 
+![Actions Status](https://github.com/jeremymaya/Code-401-Lab03-SystemIO-Two/workflows/.NET%20Core/badge.svg)
+
 ## Review of C\#
 
 Author: Kyungrae Kim
